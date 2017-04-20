@@ -1,47 +1,24 @@
-<<<<<<< HEAD
-'use strict';
-
-// Modules
-var webpack = require('webpack');
-var autoprefixer = require('autoprefixer');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-=======
 // Modules
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
->>>>>>> temp2
 
 /**
  * Env
  * Get npm lifecycle event to identify the environment
  */
-<<<<<<< HEAD
-var ENV = process.env.npm_lifecycle_event;
-var isTest = ENV === 'test' || ENV === 'test-watch';
-var isProd = ENV === 'build';
-
-module.exports = function makeWebpackConfig() {
-=======
 const ENV = process.env.npm_lifecycle_event;
 const isTest = ENV === 'test' || ENV === 'test-watch';
 const isProd = ENV === 'build';
 
 module.exports = (function () {
->>>>>>> temp2
   /**
    * Config
    * Reference: http://webpack.github.io/docs/configuration.html
    * This is the object where all configuration gets set
    */
-<<<<<<< HEAD
-  var config = {};
-=======
   const config = {};
->>>>>>> temp2
 
   /**
    * Entry
@@ -49,10 +26,6 @@ module.exports = (function () {
    * Should be an empty object if it's generating a test build
    * Karma will set this when it's a test build
    */
-<<<<<<< HEAD
-  config.entry = isTest ? void 0 : {
-    app: './src/app/app.js'
-=======
   config.entry = isTest ? 0 : {
     app: './src/app/app.js',
     vendor: [
@@ -64,7 +37,6 @@ module.exports = (function () {
       'moment',
       'restangular',
     ],
->>>>>>> temp2
   };
 
   /**
@@ -75,11 +47,7 @@ module.exports = (function () {
    */
   config.output = isTest ? {} : {
     // Absolute output directory
-<<<<<<< HEAD
-    path: __dirname + '/dist',
-=======
     path: `${__dirname}/dist`,
->>>>>>> temp2
 
     // Output path from the view of the page
     // Uses webpack-dev-server in development
@@ -91,11 +59,7 @@ module.exports = (function () {
 
     // Filename for non-entry points
     // Only adds hash in build mode
-<<<<<<< HEAD
-    chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
-=======
     chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js',
->>>>>>> temp2
   };
 
   /**
@@ -105,22 +69,11 @@ module.exports = (function () {
    */
   if (isTest) {
     config.devtool = 'inline-source-map';
-<<<<<<< HEAD
-  }
-  else if (isProd) {
-    config.devtool = 'source-map';
-  }
-  else {
-    config.devtool = 'eval-source-map';
-  }
-=======
   } else if (isProd) {
     config.devtool = 'source-map';
   } else {
     config.devtool = '#inline-source-map';
   }
-
->>>>>>> temp2
 
   /**
    * Loaders
@@ -138,42 +91,21 @@ module.exports = (function () {
       // Compiles ES6 and ES7 into ES5 code
       test: /\.js$/,
       loader: 'babel-loader',
-<<<<<<< HEAD
-      exclude: /node_modules/
-=======
       exclude: /node_modules/,
->>>>>>> temp2
     }, {
       // CSS LOADER
       // Reference: https://github.com/webpack/css-loader
       // Allow loading css through js
-<<<<<<< HEAD
-      //
-      // Reference: https://github.com/postcss/postcss-loader
-      // Postprocess your css with PostCSS plugins
-      test: /\.css$/,
-=======
       test: /\.css$/,
       loader: ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
         loader: 'css-loader' }),
     }, {
->>>>>>> temp2
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Extract css files in production builds
       //
       // Reference: https://github.com/webpack/style-loader
       // Use style-loader in development.
-<<<<<<< HEAD
-
-      loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
-        loader: [
-          {loader: 'css-loader', query: {sourceMap: true}},
-          {loader: 'postcss-loader'}
-        ],
-      })
-=======
       test: /\.scss$/,
       loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
@@ -183,7 +115,6 @@ module.exports = (function () {
           { loader: 'sass-loader' },
         ],
       }),
->>>>>>> temp2
     }, {
       // ASSET LOADER
       // Reference: https://github.com/webpack/file-loader
@@ -192,23 +123,14 @@ module.exports = (function () {
       // Pass along the updated reference to your code
       // You can add here any file extension you want to get copied to your output
       test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-<<<<<<< HEAD
-      loader: 'file-loader'
-=======
       loader: 'file-loader',
->>>>>>> temp2
     }, {
       // HTML LOADER
       // Reference: https://github.com/webpack/raw-loader
       // Allow loading html through js
       test: /\.html$/,
-<<<<<<< HEAD
-      loader: 'raw-loader'
-    }]
-=======
       loader: 'raw-loader',
     }],
->>>>>>> temp2
   };
 
   // ISTANBUL LOADER
@@ -221,39 +143,6 @@ module.exports = (function () {
       test: /\.js$/,
       exclude: [
         /node_modules/,
-<<<<<<< HEAD
-        /\.spec\.js$/
-      ],
-      loader: 'istanbul-instrumenter-loader',
-      query: {
-        esModules: true
-      }
-    })
-  }
-
-  /**
-   * PostCSS
-   * Reference: https://github.com/postcss/autoprefixer-core
-   * Add vendor prefixes to your css
-   */
-   // NOTE: This is now handled in the `postcss.config.js`
-   //       webpack2 has some issues, making the config file necessary
-
-  /**
-   * Plugins
-   * Reference: http://webpack.github.io/docs/configuration.html#plugins
-   * List: http://webpack.github.io/docs/list-of-plugins.html
-   */
-  config.plugins = [
-    new webpack.LoaderOptionsPlugin({
-      test: /\.scss$/i,
-      options: {
-        postcss: {
-          plugins: [autoprefixer]
-        }
-      }
-    })
-=======
         /\.spec\.js$/,
       ],
       loader: 'istanbul-instrumenter-loader',
@@ -273,8 +162,6 @@ module.exports = (function () {
         // { from: 'src/index.html', to: '.' },
         { from: 'node_modules/font-awesome/fonts/**', to: '.' },
     ]),
-
->>>>>>> temp2
   ];
 
   // Skip rendering index.html in test mode
@@ -283,28 +170,18 @@ module.exports = (function () {
     // Render index.html
     config.plugins.push(
       new HtmlWebpackPlugin({
-<<<<<<< HEAD
-        template: './src/public/index.html',
-        inject: 'body'
-=======
         template: './src/index.html',
         inject: 'body',
->>>>>>> temp2
       }),
 
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Extract css files
       // Disabled when in test mode or not in build mode
-<<<<<<< HEAD
-      new ExtractTextPlugin({filename: 'css/[name].css', disable: !isProd, allChunks: true})
-    )
-=======
       new ExtractTextPlugin({
         filename: 'css/[name].css',
         disable: !isProd,
         allChunks: true,
       }));
->>>>>>> temp2
   }
 
   // Add build specific plugins
@@ -325,14 +202,8 @@ module.exports = (function () {
       // Copy assets from the public folder
       // Reference: https://github.com/kevlened/copy-webpack-plugin
       new CopyWebpackPlugin([{
-<<<<<<< HEAD
-        from: __dirname + '/src/public'
-      }])
-    )
-=======
         from: `${__dirname}/src`,
       }]));
->>>>>>> temp2
   }
 
   /**
@@ -341,18 +212,9 @@ module.exports = (function () {
    * Reference: http://webpack.github.io/docs/webpack-dev-server.html
    */
   config.devServer = {
-<<<<<<< HEAD
-    contentBase: './src/public',
-    stats: 'minimal'
-  };
-
-  return config;
-}();
-=======
     contentBase: './src',
     stats: 'minimal',
   };
 
   return config;
 }());
->>>>>>> temp2
