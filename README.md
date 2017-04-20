@@ -1,10 +1,12 @@
 # angularjs-seed
 
-[![Dependency Status](https://david-dm.org/preboot/angularjs-webpack/status.svg)](https://david-dm.org/preboot/angular-webpack#info=dependencies) [![devDependency Status](https://david-dm.org/preboot/angularjs-webpack/dev-status.svg)](https://david-dm.org/preboot/angularjs-webpack#info=devDependencies)
+[![Dependency Status](https://david-dm.org/EmandM/angularjs-seed/status.svg)](https://david-dm.org/EmandM/angularjs-seed#info=dependencies) [![devDependency Status](https://david-dm.org/EmandM/angularjs-seed/dev-status.svg)](https://david-dm.org/EmandM/angularjs-seed#info=devDependencies)
 
 Branched from [preboot/angularjs-webpack](https://github.com/preboot/angularjs-webpack). All credit for initial config goes there.
 
 A complete, yet simple, starter for Angular using Webpack.
+
+Branched from [preboot/angularjs-webpack](https://github.com/preboot/angularjs-webpack). All credit for initial config goes there
 
 This workflow serves as a starting point for building Angular 1.x applications using Webpack 2.x.
 The initial project is set up with [AngularJs](https://angularjs.org/), [Angular Material](https://material.angularjs.org/latest/), [Ui Router](https://ui-router.github.io/), [Restangular](https://github.com/mgonto/restangular), [Lodash](https://lodash.com/), [MomentJs](https://momentjs.com/), and [Font Awesome](http://fontawesome.io/). This set of packages will give you a project that takes very little time to get a professional looking application up and running.
@@ -23,20 +25,21 @@ The initial project is set up with [AngularJs](https://angularjs.org/), [Angular
 
 ### Quick start
 
-> Clone/Download the repo then edit `app.js` inside [`/src/app/app.js`](/src/app/app.js)
+> Clone/Download the repo then add components inside [`/src/app/components`](/src/app/components)
+> Access these components from `app.routing.js` inside [`/src/app/app.routing.js`](/src/app/app.routing.js)
 
 ```bash
-# clone our repo
-$ git clone https://github.com/preboot/angularjs-webpack.git my-app
+# clone the repo
+$ git clone https://github.com/EmandM/angularjs-seed.git web-app
 
 # change directory to your app
-$ cd my-app
+$ cd web-app
 
 # install the dependencies with npm
 $ npm install
 
 # start the server
-$ npm start
+$ npm run dev
 ```
 
 go to [http://localhost:8080](http://localhost:8080) in your browser.
@@ -56,7 +59,7 @@ go to [http://localhost:8080](http://localhost:8080) in your browser.
 ## Dependencies
 
 What you need to run this app:
-* `node` and `npm` (Use [NVM](https://github.com/creationix/nvm))
+* `node` and `npm`
 * Ensure you're running Node (`v4.1.x`+) and NPM (`2.14.x`+)
 
 ## Installing
@@ -69,7 +72,7 @@ What you need to run this app:
 
 After you have installed all dependencies you can now run the app with:
 ```bash
-npm start
+npm run dev
 ```
 
 It will start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://localhost:8080`.
@@ -79,7 +82,7 @@ It will start a local server using `webpack-dev-server` which will watch, build 
 ### Build files
 
 * single run: `npm run build`
-* build files and watch: `npm start`
+* build files and watch: `npm run dev`
 
 ### Linter
 
@@ -92,7 +95,7 @@ Most code editors will show lint errors inside the editor with some setup.
 
 #### 1. Unit Tests
 
-* single run: `npm test`
+* single run: `npm run test`
 * live mode (TDD style): `npm run test-watch`
 
 # License

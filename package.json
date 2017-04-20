@@ -1,7 +1,7 @@
 {
-  "name": "angular-webpack-workflow",
+  "name": "angular-webpack-seed",
   "version": "1.1.0",
-  "description": "A workflow for Angular made with Webpack",
+  "description": "A seed project for Angular made with Webpack",
   "scripts": {
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/preboot/angularjs-webpack.git"
+    "url": "https://github.com/EmandM/angularjs-seed.git"
   },
-  "author": "Jesus Rodriguez",
+  "author": "Emma McMillan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/preboot/angularjs-webpack/issues"
+    "url": "https://github.com/EmandM/angularjs-seed/issues"
   },
-  "homepage": "https://github.com/preboot/angularjs-webpack",
+  "homepage": "https://github.com/EmandM/angularjs-seed",
   "dependencies": {
     "angular": "^1.6.4",
     "angular-animate": "^1.6.4",
