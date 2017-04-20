@@ -1,25 +1,16 @@
-import angular from 'angular';
+// Import styles that are needed
+import 'angular-material/angular-material.css';
+import 'roboto-fontface/css/roboto/sass/roboto-fontface-regular.scss';
+import 'font-awesome/css/font-awesome.css';
 
-import '../style/app.css';
+// Always import app.module first -> it sets up the angular app
+import './app.module';
 
-let app = () => {
-  return {
-    template: require('./app.html'),
-    controller: 'AppCtrl',
-    controllerAs: 'app'
-  }
-};
+// Config js files
+import './app.config';
+import './app.routing';
 
-class AppCtrl {
-  constructor() {
-    this.url = 'https://github.com/preboot/angular-webpack';
-  }
-}
-
-const MODULE_NAME = 'app';
-
-angular.module(MODULE_NAME, [])
-  .directive('app', app)
-  .controller('AppCtrl', AppCtrl);
-
-export default MODULE_NAME;
+// All other files
+import './components';
+import './services';
+import './styles';
