@@ -7,8 +7,7 @@
     "lint-fix": "eslint --fix .",
     "build": "rimraf dist && webpack --bail --progress --profile",
     "dev": "webpack-dev-server",
-    "server": "webpack-dev-server --history-api-fallback --inline --progress",
-    "start": "npm run server",
+    "start": "webpack-dev-server --history-api-fallback --inline --progress",
     "test-watch": "karma start --auto-watch --no-single-run",
     "test": "karma start"
   },
