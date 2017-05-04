@@ -93,20 +93,7 @@ module.exports = (function () {
       loader: 'babel-loader',
       exclude: /node_modules/,
     }, {
-      // CSS LOADER
-      // Reference: https://github.com/webpack/css-loader
-      // Allow loading css through js
-      test: /\.css$/,
-      loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
-        loader: 'css-loader' }),
-    }, {
-      // Reference: https://github.com/webpack/extract-text-webpack-plugin
-      // Extract css files in production builds
-      //
-      // Reference: https://github.com/webpack/style-loader
-      // Use style-loader in development.
-      test: /\.scss$/,
+      test: /\.(scss|css)$/,
       loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
         loader: [
@@ -153,10 +140,6 @@ module.exports = (function () {
   }
 
   config.plugins = [
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor'],
-      minChunks: 2,
-    }),
     new CopyWebpackPlugin([
         { from: 'node_modules/**/*.html', to: '.' },
         // { from: 'src/index.html', to: '.' },
@@ -172,6 +155,10 @@ module.exports = (function () {
       new HtmlWebpackPlugin({
         template: './src/index.html',
         inject: 'body',
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        names: ['vendor'],
+        minChunks: 2,
       }),
 
       // Reference: https://github.com/webpack/extract-text-webpack-plugin

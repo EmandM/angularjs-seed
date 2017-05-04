@@ -1,4 +1,5 @@
-import webpackConfig from './webpack.config';
+/* eslint global-require: 0 */
+/* eslint-env es5 */
 
 // Reference: http://karma-runner.github.io/0.12/config/configuration-file.html
 module.exports = function (karmaConfig) {
@@ -47,7 +48,7 @@ module.exports = function (karmaConfig) {
       ],
     },
 
-    webpack: webpackConfig,
+    webpack: require('./webpack.config.js'),
 
     // Hide webpack build information from output
     webpackMiddleware: {
